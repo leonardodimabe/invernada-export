@@ -25,6 +25,36 @@ class SaleOrder(models.Model):
 
     delivery_date = fields.Datetime(string='Fecha de entrega')
 
+    charging_mode = fields.Selection(selection=[('piso', 'A Piso'), ('slip_sheet', 'Slip Sheet'), ('palet', 'Paletizado')], string='Modo de Carga')
+
+    client_label = fields.Boolean(string='Etiqueta Cliente', default=False)
+
+    type_transport = fields.Selection(selection=[('maritimo', 'Marítimo'), ('terrestre', 'Terrestre'), ('aereo', 'Aéreo')], string='Vía de Transporte')
+
+    container_number = fields.Char(string='N° Contenedor')
+
+    booking_number = fields.Char(string='N° Booking')
+
+    bl_number = fields.Char(string='N° BL')
+
+    freight_value = fields.Float(string='Valor Flete')
+
+    safe_value = fields.Float(string='Valor Seguro')
+
+    total_value = fields.Float(string='Valor Total')
+
+    value_per_kilogram = fields.Float(string='Valor por kilo')
+
+    remarks = fields.Text(string='Comentarios')
+
+    container_type = fields.Many2one(comodel_name='custom.container.type', string='Tipo de contenedor')
+
+    shipping_company = fields.Many2one(comodel_name='custom.shipping.company', string='Naviera')
+
+    ship = fields.Many2one(comodel_name='custom.ship', string='Nave')
+
+    ship_number = fields.Char(string='Viaje')
+
     @api.onchange('etd')
     def set_etd_values(self):
         if self.etd:

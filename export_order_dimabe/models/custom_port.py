@@ -3,7 +3,7 @@ from odoo import fields, models
 class CustomPort(models.Model):
     _name = 'custom.port'
 
-    name = fields.Char(string= 'Nombre')
+    name = fields.Char(string= 'Nombre', required=True)
 
     code = fields.Char(string='Código', required=True)
 
