@@ -31,7 +31,7 @@
     </record>
 
 
-    <record id="action_custom_container_type_views" model="ir.actions.act_window">
+    <record id="action_custom_shipping_company_views" model="ir.actions.act_window">
       <field name="name">Navieras</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">custom.shipping_company</field>
